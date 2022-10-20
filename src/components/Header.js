@@ -9,10 +9,10 @@ const Header = ({ setTitle }) => {
   };
   const submitHandler = (event) => {
     event.preventDefault();
-    event.target.value !== "" &&
+    inputText &&
       setTitle({
         name: "",
-        search: "/search/",
+        search: "/search/movie",
         query: `&query=${inputText}`,
       });
     setInputText("");
@@ -31,15 +31,34 @@ const Header = ({ setTitle }) => {
             name="categories"
             id=""
             onClick={(e) =>
-              setTitle({ name: `/${e.target.value}`, search: "/", query: "" })
+              e.target.value === "trending"
+                ? setTitle({
+                    name: `/${e.target.value}/all/day`,
+                    search: "/",
+                    query: "",
+                  })
+                : setTitle({
+                    name: `movie/${e.target.value}`,
+                    search: "/",
+                    query: "",
+                  })
             }
             onBlur={(e) =>
-              setTitle({ name: `/${e.target.value}`, search: "/", query: "" })
+              e.target.value === "trending"
+                ? setTitle({
+                    name: `/${e.target.value}/all/day`,
+                    search: "/",
+                    query: "",
+                  })
+                : setTitle({
+                    name: `movie/${e.target.value}`,
+                    search: "/",
+                    query: "",
+                  })
             }
           >
-         
+            <option value="trending">trending </option>
             <option value="now_playing">Now playing Movies </option>
-            <option value="upcoming">Upcoming Movies </option>
             <option value="popular">Popular Movies </option>
             <option value="top_rated">Top rated Movies </option>
           </select>
