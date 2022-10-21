@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Fasthand&display=swap');
+.card {
+   outline: none;
+   margin: 1rem;
+   width: 150px;
+   display: flex;
+   justify-content: space-between;
+  .img_card {
+    width: 100%;
+    border-radius: 5px;
+  }
+  .card_title{
+        margin-top: 10px;
+        font-size: 1.2rem;
+        font-family: 'Fasthand', cursive;
+        font-weight: bolder;
+}
+  .card_release_date {
+    width: 100%;
+    font-size: 0.8rem;
+  }
+  .genres {
+    display: flex;
+    justify-content: flex-start;
+    margin: 3px;
+    .vote {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      font-size: 0.7rem;
+      padding: 5px;
+    }
+  }
+}
+
+
