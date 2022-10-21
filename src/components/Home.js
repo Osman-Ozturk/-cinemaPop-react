@@ -26,6 +26,7 @@ function Home({ movies, setTitle }) {
     <div className="Home">
       <div >
         <div className="languages">
+          <button onClick={()=>setAction(movies)} >All</button>
           <button onClick={buttonHandler} value="en">En</button>
           <button onClick={buttonHandler} value="fr">Fr</button>
           <button onClick={buttonHandler} value="ja">Ja</button>
