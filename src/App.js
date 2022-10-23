@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import { Route , Routes } from "react-router-dom";
 import Contact from "./components/Contact";
+import { MovieContext } from "./context/MovieContext";
 
 function App() {
-  const [movies, setMovies] = useState([]);
+  const {movies,setMovies} =useContext(MovieContext);
   const [title, setTitle] = useState({
-    name: "/now_playing",
+    name: "/popular",
     search: "/",
     query: "",
   });
@@ -18,7 +19,6 @@ function App() {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setMovies(data.results);
       });
   }, [title]);

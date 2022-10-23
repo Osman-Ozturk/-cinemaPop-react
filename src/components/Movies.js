@@ -1,10 +1,9 @@
-import { useState } from "react";
-import genres from "./genres.json";
+
 import "../styles/Movies.scss"
 
 const Movies = ({ ...movie }) => {
   const API_IMG = "https://image.tmdb.org/t/p/w500/";
-  const [border , setBorder]=useState("green")
+  //const [border , setBorder]=useState("green")
   return (
     <div className="card" style={{height:'390px'}}>
       <img

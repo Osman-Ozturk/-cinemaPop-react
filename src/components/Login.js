@@ -1,28 +1,66 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import { useContext, useState } from "react";
+import { MovieContext } from "../context/MovieContext";
+function Login({ setShow }) {
+  const { users, setLogin, setLoginUser } = useContext(MovieContext);
+  const [benutzer, setBenutzer] = useState({ email: "", password: "" });
+  function inputChange(e) {
+    let dataVonInput = e.target.value;
+    e.target.name === "password"
+      ? setBenutzer({ ...benutzer, [e.target.name]: parseInt(dataVonInput) })
+      : setBenutzer({ ...benutzer, [e.target.name]: dataVonInput });
+  }
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const findUser = users.filter(
+      (user) =>
+        user.email === benutzer.email &&
+        user.password === Number(benutzer.password)
+    );
+    if (findUser.length > 0) {
+      setLogin(true);
+      setShow(false);
+    } else {
+      alert("wrong passport or email address");
+    }
+    setLoginUser(findUser);
+  };
 
-function Login() {
   return (
-    <Form>
-      <Form.Group className="m-4" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" required/>
-        <Form.Text className="text-muted">
+    <form>
+      <div className="m-4">
+        <label className="mb-2">Email address</label>
+        <input
+          type="email"
+          placeholder="Enter email"
+          required
+          onChange={inputChange}
+          name="email"
+        />
+        <p className="text-muted mt-2">
           We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
+        </p>
+      </div>
 
-      <Form.Group className="m-4" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
-      </Form.Group>
-      
-      <Button variant="primary" type="submit" className='m-4'>
+      <div className="m-4">
+        <label className="mb-2">Password</label>
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={inputChange}
+          name="password"
+        />
+      </div>
+
+      <button
+        variant="primary"
+        type="submit"
+        className="m-4"
+        onClick={submitHandler}
+      >
         Submit
-      </Button>
-    </Form>
+      </button>
+    </form>
   );
 }
 
 export default Login;
-

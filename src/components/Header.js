@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import Login from "./Login";
-
+import "../styles/Header.scss";
+import Signup from "./Signup";
+import { MovieContext } from "../context/MovieContext";
 const Header = ({ setTitle }) => {
+  const { login,setLogin, loginUser } = useContext(MovieContext);
   const [inputText, setInputText] = useState("");
   const [show, setShow] = useState(false);
+  const [show2, setShow2] = useState(false);
 
   const searchHandler = (event) => {
     event.preventDefault();
@@ -14,7 +18,7 @@ const Header = ({ setTitle }) => {
   };
   const submitHandler = (event) => {
     event.preventDefault();
-    event.target.value !== "" &&
+    inputText !== "" &&
       setTitle({
         name: "",
         search: "/search/",
@@ -25,6 +29,9 @@ const Header = ({ setTitle }) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () => setShow2(true);
+  const clickHandler = () => setLogin(false);
 
   return (
     <div className="header">
@@ -34,6 +41,60 @@ const Header = ({ setTitle }) => {
         </li>
         <li>
           <Link to="/">Home</Link>
+        </li>
+
+        <li>
+          <Link to="/contact">Contact Us</Link>
+        </li>
+        <div className="login">
+          {!login ? (
+            <div className="button">
+              <li>
+                <button
+                  className="btn btn-primary text-white"
+                  onClick={handleShow}
+                  
+                >
+                  Login
+                </button>
+              </li>
+              <li>
+                <button
+                  className="btn btn-primary text-white"
+                  onClick={handleShow2}
+                >
+                  Signup
+                </button>{" "}
+              </li>
+            </div>
+          ) : (
+            <>
+              <div class="dropdown">
+                <p class="dropbtn">{loginUser[0].name}</p>
+                <div class="dropdown-content">
+                  <p >{loginUser[0].email}</p>
+                  <p >Einstellung</p>
+                  <p onClick={clickHandler}>Abnehmen</p>
+                </div>
+              </div>
+
+              <img src={loginUser[0].image} alt={loginUser[0].id}/>
+            </>
+          )}
+        </div>
+      </ul>
+
+      <ul className="search_container">
+        <li>
+          <form action="" onSubmit={submitHandler}>
+            <input
+              type="text"
+              onChange={searchHandler}
+              value={inputText}
+              placeholder="browse movies"
+            />
+            <button>Search</button>
+          </form>
         </li>
         <li>
           <select
@@ -53,40 +114,30 @@ const Header = ({ setTitle }) => {
             <option value="top_rated">Top rated Movies </option>
           </select>
         </li>
-        <li>
-          <Link to="/contact">Contact Us</Link>
-        </li>
       </ul>
-
-      <ul className="search_container">
-        <li>
-          <form action="" onSubmit={submitHandler}>
-            <input
-              type="text"
-              onChange={searchHandler}
-              value={inputText}
-              placeholder="browse movies"
-            />
-          </form>
-        </li>
-        <li>
-          <Button className="btn btn-primary text-white" onClick={handleShow}>
-            Login
-          </Button>
-        </li>
-        <li>Signup</li>
-      </ul>
-       <Modal show={show} onHide={handleClose}>
-        <Modal.Header className="m-4"><h2>User Login</h2> </Modal.Header>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header className="m-4">
+          <h2>User Login</h2>{" "}
+        </Modal.Header>
         <Modal.Body>
-        <Login />
-
+          <Login setShow={setShow} />
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={handleClose}>Close</Button>
         </Modal.Footer>
-      </Modal> 
-        
+      </Modal>
+
+      <Modal show={show2} onHide={handleClose2}>
+        <Modal.Header>
+          <h2>Singup</h2>
+        </Modal.Header>
+        <Modal.Body>
+          <Signup />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={handleClose2}>Close</Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

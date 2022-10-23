@@ -4,77 +4,13 @@ body, *{
   font-size: 1.2rem;
 
 }
-.Contact {
-  text-align: center;
-  margin-top: 200px;
-}
-.Home {
-  text-align: center;
-  min-height: 100vh;
-  display:grid;
-  grid-template-columns: 30% 70%;
-  margin-top: 180px;
-  padding: 1rem;
-}
 
-.header {
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  background-color: cadetblue;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
-.genre_container {
-  font-weight: 600;
-  display: grid;
-  align-content: start;
-  justify-content: space-around;
-  grid-template-columns: repeat(2 ,50%)  ;
-  gap: 1rem;
-  padding: 1rem;
-  border: black solid 2px;
-}
-.genre_container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-.genre_container div {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-  width: 100px;
-  padding:1rem;
-  background-color: rgba(16, 203, 47, 0.46);
-  font-size: 0.8rem;
-}
 
-.lists_container,
-.search_container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1rem;
-  list-style-type: none;
-}
-li {
-  padding: 1rem;
-}
 
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: center;
-  
-}
+
+
+
+
 
 
 

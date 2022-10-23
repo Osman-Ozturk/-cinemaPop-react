@@ -2,7 +2,7 @@ import React from "react";
 import Movies from "./Movies";
 import { useState } from "react";
 import genres from "./genres.json";
-
+import "../styles/Home.scss";
 function Home({ movies, setTitle }) {
   const [action, setAction] = useState([]);
 
@@ -17,19 +17,27 @@ function Home({ movies, setTitle }) {
   };
   const buttonHandler = (e) => {
     e.preventDefault();
-    const actionMovies = movies.filter(movie => movie.original_language === e.target.value);
+    const actionMovies = movies.filter(
+      (movie) => movie.original_language === e.target.value
+    );
 
     setAction(actionMovies);
     setTitle({ name: "/now_playing", search: "/", query: "" });
   };
   return (
     <div className="Home">
-      <div >
+      <div>
         <div className="languages">
-          <button onClick={()=>setAction(movies)} >All</button>
-          <button onClick={buttonHandler} value="en">En</button>
-          <button onClick={buttonHandler} value="fr">Fr</button>
-          <button onClick={buttonHandler} value="ja">Ja</button>
+          <button onClick={() => setAction(movies)}>All</button>
+          <button onClick={buttonHandler} value="en">
+            En
+          </button>
+          <button onClick={buttonHandler} value="fr">
+            Fr
+          </button>
+          <button onClick={buttonHandler} value="ja">
+            Ja
+          </button>
         </div>
         <div className="genre_container">
           {genres.map((element) => (
