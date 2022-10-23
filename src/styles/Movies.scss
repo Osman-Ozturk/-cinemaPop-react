@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fasthand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&display=swap');
 .card {
    outline: none;
    margin: 1rem;
@@ -11,8 +12,9 @@
   }
   .card_title{
         margin-top: 10px;
-        font-size: 1.2rem;
-        font-family: 'Fasthand', cursive;
+        font-size: 1rem;
+        //font-family: 'Fasthand', cursive;
+        font-family: 'Fuzzy Bubbles', cursive;
         font-weight: bolder;
 }
   .card_release_date {

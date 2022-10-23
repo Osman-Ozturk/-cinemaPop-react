@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { MovieContext } from "../context/MovieContext";
+import "../styles/Login.scss"
 function Login({ setShow }) {
   const { users, setLogin, setLoginUser } = useContext(MovieContext);
   const [benutzer, setBenutzer] = useState({ email: "", password: "" });
@@ -26,7 +27,7 @@ function Login({ setShow }) {
   };
 
   return (
-    <form>
+    <form className="loginForm">
       <div className="m-4">
         <label className="mb-2">Email address</label>
         <input
@@ -52,12 +53,12 @@ function Login({ setShow }) {
       </div>
 
       <button
+      className="btn btn-primary m-4"
         variant="primary"
         type="submit"
-        className="m-4"
         onClick={submitHandler}
       >
-        Submit
+        Login
       </button>
     </form>
   );

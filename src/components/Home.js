@@ -28,16 +28,24 @@ function Home({ movies, setTitle }) {
     <div className="Home">
       <div>
         <div className="languages">
-          <button onClick={() => setAction(movies)}>All</button>
-          <button onClick={buttonHandler} value="en">
+        <label htmlFor="">Movie language</label>
+        <select
+            required
+            name="categories"
+            onClick={buttonHandler}
+          >
+            <option value="en">
             En
-          </button>
-          <button onClick={buttonHandler} value="fr">
-            Fr
-          </button>
-          <button onClick={buttonHandler} value="ja">
-            Ja
-          </button>
+           </option>
+            <option  value="fr">
+            Fr</option>
+            <option  value="ja">
+            Ja</option>
+            
+          </select>
+          
+          
+          
         </div>
         <div className="genre_container">
           {genres.map((element) => (

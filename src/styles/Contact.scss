@@ -1,4 +1,40 @@
-.Contact {
-        text-align: center;
-        margin-top: 200px;
+@import url('https://fonts.googleapis.com/css2?family=Fasthand&display=swap');
+.contact {
+  background-image: url("https://www.themoviedb.org/t/p/w600_and_h900_bestv2/vaIREdPGZOnW9Jrs86mheVVlIQQ.jpg");
+  background-size: cover;
+  border:1px solid;
+  .contactBody {
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 200px auto 20px auto;
+    width: 550px;
+    border-radius: 20px;
+    box-shadow: 00px 000px 250px 150px rgb(65, 86, 114);
+
+    table {
+      margin: 20px;
+      th{
+        font-family: 'Fasthand', cursive;
+        font-size: 2rem;
+        font-weight: bolder;
       }
+      button{
+        border-radius:37% 63% 44% 56% / 58% 20% 80% 42%  ;
+        padding: 5px;
+        
+      }
+      button:focus{
+        background-color: rgb(59, 72, 68);
+      }
+      
+    }
+    table > tr > td > input {
+      margin: 8px 0;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    }
+  }
+}

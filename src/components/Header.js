@@ -40,18 +40,18 @@ const Header = ({ setTitle }) => {
           <img src="" alt="logo" className="logo" />
         </li>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/" className="router">Home</Link>
         </li>
 
         <li>
-          <Link to="/contact">Contact Us</Link>
+          <Link to="/contact" className="router">Contact Us</Link>
         </li>
         <div className="login">
           {!login ? (
             <div className="button">
               <li>
                 <button
-                  className="btn btn-primary text-white"
+                  className="btn"
                   onClick={handleShow}
                   
                 >
@@ -60,7 +60,7 @@ const Header = ({ setTitle }) => {
               </li>
               <li>
                 <button
-                  className="btn btn-primary text-white"
+                  className="btn"
                   onClick={handleShow2}
                 >
                   Signup
@@ -97,6 +97,7 @@ const Header = ({ setTitle }) => {
           </form>
         </li>
         <li>
+          
           <select
             required
             name="categories"
@@ -115,7 +116,7 @@ const Header = ({ setTitle }) => {
           </select>
         </li>
       </ul>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} className='modalLogin'>
         <Modal.Header className="m-4">
           <h2>User Login</h2>{" "}
         </Modal.Header>

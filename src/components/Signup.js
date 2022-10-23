@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { MovieContext } from "../context/MovieContext";
-
+import "../styles/Login.scss"
 function Signup() {
   const { users, setUsers, person, setPerson } =
     useContext(MovieContext);
@@ -22,7 +22,7 @@ function Signup() {
 
   return (
     <>
-      <form onSubmit={addNewPerson}>
+      <form onSubmit={addNewPerson} className="loginForm">
         <div className="m-4">
           <label>User Name</label>
           <input
