@@ -98,6 +98,10 @@ button {
   gap: 2em;
   padding: 1em;
   position: relative;
+  
+}
+.kategorie{
+  width: 25%;
 }
 
 .genre_container {
@@ -112,7 +116,6 @@ button {
   padding: 1rem;
   position: sticky;
   top: 100px;
-  width: 20%;
 }
 .genre_container li {
   cursor: pointer;
@@ -282,10 +285,11 @@ th:nth-child(1) {
   .menuContainer {
     display: none;
   }
-
+  
   .genre_container {
     grid-template-columns: 1fr;
     width: 10%;
+    margin: auto;
   }
   .categories {
     font-size: 0.8em;
@@ -302,6 +306,13 @@ th:nth-child(1) {
     flex-direction: column;
     align-items: center;
     position: relative;
+  }
+  .kategorie{
+    display: block;
+    width: 100%;
+  }
+  .languages{
+    text-align: center;
   }
   .header {
     font-size: 0.9em;

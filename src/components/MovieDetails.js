@@ -6,7 +6,6 @@ const MovieDetails = ({ movies, similar,setTitle,categoryTitle,setSimilar,myFavo
   const API_IMG = "https://image.tmdb.org/t/p/w500/";
     const [favourite,setFavourite] = useState([])
   const cardHandler = (movie) => {
-    console.log(movie);
     setTitle({
       search: "/movie/",
       name: `${movie.id}`,
@@ -20,7 +19,6 @@ const MovieDetails = ({ movies, similar,setTitle,categoryTitle,setSimilar,myFavo
         .then((response) => response.json())
         .then((data) => {
           setSimilar(data.results);
-          console.log(data);
         })
     
  
@@ -30,18 +28,14 @@ const MovieDetails = ({ movies, similar,setTitle,categoryTitle,setSimilar,myFavo
   if(!favourite.length) {
       setFavourite([movie])
        myFavourites.current = favourite
-       
-       console.log(favourite);
    
    }else{
         favourite.map(i => (i.id !== movie.id )&& 
         setFavourite([...favourite, movie]))
         myFavourites.current = favourite
-        console.log(favourite);
         
      
 } 
-console.log(favourite);
   
   }
 

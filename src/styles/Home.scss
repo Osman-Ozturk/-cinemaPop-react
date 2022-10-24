@@ -1,0 +1,17 @@
+.languages {
+  label {
+    margin-right: 5px;
+    color: rgb(248, 247, 247);
+    font-size: 1.1rem;
+  }
+  select {
+    width: 60px;
+    background-color: rgba(2, 2, 2, 0.446);
+    padding: 3px;
+    border-radius: 10px;
+    color: white;
+    option {
+      cursor: pointer;
+    }
+  }
+}

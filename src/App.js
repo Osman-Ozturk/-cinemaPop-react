@@ -9,8 +9,7 @@ function App() {
   const [title, setTitle] = useState({
     name: `/trending/all/day`,
     search: "/",
-    query: "",
-    language:''
+    query: ""
   });
 
   const categoryTitle = useRef("TRENDING NOW");
