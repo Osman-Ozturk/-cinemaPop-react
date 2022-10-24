@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { MovieContext } from "../context/MovieContext";
 import "../styles/Login.scss"
 function Login({ setShow }) {
-  const { users, setLogin, setLoginUser } = useContext(MovieContext);
+  const { users,login, setLogin, setLoginUser } = useContext(MovieContext);
   const [benutzer, setBenutzer] = useState({ email: "", password: "" });
   function inputChange(e) {
     let dataVonInput = e.target.value;
@@ -18,6 +18,7 @@ function Login({ setShow }) {
         user.password === Number(benutzer.password)
     );
     if (findUser.length > 0) {
+      
       setLogin(true);
       setShow(false);
     } else {

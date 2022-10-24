@@ -7,7 +7,7 @@ import Contact from "./components/Contact";
 import { MovieContext } from "./context/MovieContext";
 
 function App() {
-  const {movies,setMovies} =useContext(MovieContext);
+  const {movies,setMovies,login,setLogin} =useContext(MovieContext);
   const [title, setTitle] = useState({
     name: "/popular",
     search: "/",
@@ -22,6 +22,14 @@ function App() {
         setMovies(data.results);
       });
   }, [title]);
+  // useEffect(()=>{
+  //   localStorage.setItem("login",JSON.stringify(login));
+  // },[login])
+  // useEffect(()=>{
+  //     const getLocal = localStorage.getItem("login");
+  //     const initialValue = JSON.parse(getLocal)
+
+  //   },[])
 
   return (
     <div className="App">
