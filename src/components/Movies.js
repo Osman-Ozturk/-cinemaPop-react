@@ -1,31 +1,102 @@
-import genres from "./genres.json";
+// import { useState } from "react";
+import { useState } from "react";
+import { AiTwotoneStar } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import MovieDetails from "./MovieDetails";
 
-const Movies = ({ movies }) => {
+// import Modal from "./Modal";
+
+const Movies = ({ movies, categoryTitle, setTitle,myFavourites }) => {
+  // const [showModal,setShowModal] = useState(false)
+  // const [modalInfo, setModalInfo] = useState()
+
   const API_IMG = "https://image.tmdb.org/t/p/w500/";
-  return (
-    <div className="cards">
-      {movies ? (
-        movies.map((movie) => (
-          <div className="card" key={movie.id}>
-            <img
-              className="img_card"
-              src={API_IMG + movie.poster_path}
-              alt={movie.original_title}
-            />
+  // const cardHandler = (movie) => {
+  //   setShowModal(true)
+  //   setModalInfo(movie)
+  // }
+  const [similar, setSimilar] = useState();
+  const cardHandler = (movie) => {
+    console.log(movie);
+    setTitle({
+      search: "/movie/",
+      name: `${movie.id}`,
+      query: "",
+    });
+    categoryTitle.current = "";
 
-            <h3 className="card_title">{movie.original_title}</h3>
-            <div className="genres">
-              {movie.genre_ids.map((m) =>
-                genres.map((g) => g.id === m && <p>{g.name}</p>)
-              )}
-              {movie.vote_average.toFixed(1)}
+    fetch(
+      `https://api.themoviedb.org/3/movie/${movie.id}/similar?api_key=b97e8164329bf3ed7a0f1e99742b4dc4`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setSimilar(data.results);
+        console.log(data);
+      });
+  };
+
+  return (
+    <div className="cardsContainer">
+      <h2 className="categoryTitle">{categoryTitle.current}</h2>
+
+      {/* start cards section */}
+      
+        {movies.results 
+          ? <div className="cards">
+         { movies.results.map((movie) => (
+              // start card section
+              
+              <Link
+                to={`/movie/${movie.name ? movie.name : movie.title}`}
+                className="card Link"
+                key={movie.id}
+                onClick={() => {
+                  cardHandler(movie);
+                }}
+              >
+                <img
+                  className="images"
+                  src={API_IMG + movie.poster_path}
+                  alt={movie.original_title}
+                />
+
+                <div className="cardRates">
+                  <span className="movieIcon">
+                    <AiTwotoneStar className="starIcon" />{" "}
+                    {movie.vote_average.toFixed(1) + "/10"}
+                  </span>
+                  <span>{movie.vote_count / 10 + "k votes"}</span>
+                </div>
+                <div className="card_info">
+                  <h3 className="card_title">
+                    {movie.name ? movie.name : movie.title}
+                  </h3>
+                  <p>
+                    {movie.release_date
+                      ? movie.release_date
+                      : movie.first_air_date}
+                  </p>
+                  <p>Language: {movie.original_language}</p>
+                </div>
+              </Link>
+              
+            ))}
             </div>
-            <div className="card_release_date"> {movie.release_date} </div>
-          </div>
-        ))
-      ) : (
-        <p>we haven't found your movie</p>
-      )}
+          : movies && (
+              <MovieDetails
+                similar={similar}
+                setSimilar={setSimilar}
+                setTitle={setTitle}
+                movies={movies}
+                categoryTitle={categoryTitle}
+                myFavourites={myFavourites}
+              />
+            )
+          
+          }
+      
+
+      {/* { showModal && <Modal modalInfo={modalInfo} />} */}
     </div>
   );
 };
