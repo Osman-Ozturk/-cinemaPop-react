@@ -20,9 +20,38 @@ const Home = ({ setTitle, title, categoryTitle }) => {
           setMovies(data);
       })
   }, [title]);
+  const buttonHandler = (e) => {
+    e.preventDefault();
+    const actionMovies = movies.filter(
+      (movie) => movie.original_language === e
+    );
+
+    setMovies({results:actionMovies });
+    
+  };
 
   return (
     <>
+    <div className="languages">
+        <label htmlFor="">Movie language</label>
+        <select
+            required
+            name="categories"
+            onClick={(e)=>buttonHandler(e.target.value)}
+          >
+            <option value="en">
+            En
+           </option>
+            <option  value="fr">
+            Fr</option>
+            <option  value="ja">
+            Ja</option>
+            
+          </select>
+          
+          
+          
+        </div>
       <Genres setTitle={setTitle} categoryTitle={categoryTitle} />
       <Movies
         movies={movies}

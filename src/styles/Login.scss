@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Fasthand&display=swap");
+.loginForm {
+  display: block;
+  height: 350px;
+
+  label {
+    font-family: "Fasthand", cursive;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+    margin: 20px;
+  }
+  input {
+    border-radius: 10px;
+    padding-left: 10px;
+  }
+  h3 {
+    margin: 70px auto;
+    border-radius: 10px;
+    padding:5px 15px;
+    cursor: pointer;
+    background-color:  rgba(29, 132, 125, 0.581);
+    width: 50px;
+  }
+  h3:hover {
+    transform: scale(1.2);
+  }
+}

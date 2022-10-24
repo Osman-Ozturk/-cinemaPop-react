@@ -1,0 +1,86 @@
+.login {
+  display: flex;
+  margin-right: 3px;
+  .button {
+    display: flex;
+    li {
+      padding: 0;
+      margin-right: 3px;
+      .btn {
+        color: white;
+        font-weight: bolder;
+      }
+      .btn:hover {
+        transform: scale(1.32);
+      }
+    }
+  }
+  p {
+    margin-top: 10px;
+    margin-right: 5px;
+    font-size: 0.7rem;
+  }
+  img {
+    margin-left: 5px;
+    border-radius: 50% ;
+    width: 50px;
+    height: 40px;
+    cursor: pointer;
+  }
+  .dropbtn {
+    font-size: 0.8rem;
+    border: none;
+    cursor: pointer;
+  }
+
+  .dropdown {
+    color: white;
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(29, 132, 125);
+    z-index: 1;
+  }
+
+  .dropdown-content p {
+    color: white;
+    padding: 10px 5px;
+    font-size: 0.7rem;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+  }
+
+  .dropdown-content p:hover {
+    background-color: black;
+    color: white;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+}
+.modalLogin{
+  height: 70%;
+  width: 500px;
+  margin:150px auto 0px auto ;
+  box-shadow:rgba(72, 76, 76, 0.581) 0px 0px 300px 150px;
+  text-align: center;
+  background-color: white;
+  .modalFooter{
+    width: 50px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    margin: auto;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .modalFooter:hover{
+    transform: scale(1.2);
+  }
+}

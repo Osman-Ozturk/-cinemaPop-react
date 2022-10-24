@@ -4,7 +4,7 @@ import Home from "./components/Home";
 import Contact from "./components/Contact";
 import Header from "./components/Header";
 import { useState, useRef } from "react";
-
+import MovieContextProvider from "./context/MovieContext";
 function App() {
   const [title, setTitle] = useState({
     name: `/trending/all/day`,
@@ -14,6 +14,7 @@ function App() {
 
   const categoryTitle = useRef("TRENDING NOW");
   return (
+    <MovieContextProvider>
     <div className="App">
       <Header setTitle={setTitle} categoryTitle={categoryTitle} />
       <div className="home">
@@ -73,6 +74,7 @@ function App() {
         </Routes>
       </div>
     </div>
+    </MovieContextProvider>
   );
 }
 
