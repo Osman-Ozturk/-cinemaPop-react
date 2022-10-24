@@ -21,9 +21,11 @@ function App() {
       .then((data) => {
         setMovies(data.results);
       });
+      localStorage.setItem("login",JSON.stringify(login));
+      
   }, [title]);
   // useEffect(()=>{
-  //   localStorage.setItem("login",JSON.stringify(login));
+  //   
   // },[login])
   // useEffect(()=>{
   //     const getLocal = localStorage.getItem("login");

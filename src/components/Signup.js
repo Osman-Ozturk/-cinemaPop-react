@@ -16,7 +16,7 @@ function Signup() {
     e.preventDefault();
     const newArray = [...users, person];
     setUsers(newArray);
-
+    
     alert("You are registered!");
   }
 
