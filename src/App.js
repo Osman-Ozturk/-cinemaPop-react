@@ -10,6 +10,7 @@ function App() {
     name: `/trending/all/day`,
     search: "/",
     query: "",
+    language:''
   });
 
   const categoryTitle = useRef("TRENDING NOW");

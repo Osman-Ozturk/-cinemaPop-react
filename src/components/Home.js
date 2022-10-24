@@ -11,22 +11,16 @@ const Home = ({ setTitle, title, categoryTitle }) => {
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3${title.search}${title.name}?api_key=b97e8164329bf3ed7a0f1e99742b4dc4${title.query}`
+      `https://api.themoviedb.org/3${title.search}${title.name}?api_key=b97e8164329bf3ed7a0f1e99742b4dc4${title.query}${title.language}`
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        console.log(`https://api.themoviedb.org/3${title.search}${title.name}?api_key=b97e8164329bf3ed7a0f1e99742b4dc4${title.query}`);
           setMovies(data);
       })
   }, [title]);
   const buttonHandler = (e) => {
     e.preventDefault();
-    const actionMovies = movies.filter(
-      (movie) => movie.original_language === e
-    );
-
-    setMovies({results:actionMovies });
+    setTitle({ ...title,language:`&language=${e}`});
     
   };
 
