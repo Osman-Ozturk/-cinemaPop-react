@@ -1,10 +1,12 @@
 import Movies from "./Movies";
 import Genres from "./Genres";
 import Categories from "./Categories";
-import { useEffect, useState } from "react";
+import { useEffect, useState ,useContext} from "react";
 import { useRef } from "react";
 import "../styles/Home.scss"
+import { MovieContext } from "../context/MovieContext";
 const Home = ({ setTitle, title, categoryTitle }) => {
+  const {login,loginUser,setLogin,setLoginUser} = useContext(MovieContext);
   const [movies, setMovies] = useState([]);
   const myFavourites = useRef(null);
   const [searchMovies, setSearchMovies] = useState([]);
@@ -17,7 +19,18 @@ const Home = ({ setTitle, title, categoryTitle }) => {
       .then((data) => {
         setMovies(data);
       });
-  }, [title]);
+    }, [title]);
+    useEffect(()=>{
+      const loginUserLS = localStorage.getItem("loginUser")
+      const loginLS=localStorage.getItem("login");
+      if (loginLS !== null) {
+        setLogin(JSON.parse(loginLS))
+      }
+      if (loginUserLS !== null && loginUser !== "[]") {
+        setLoginUser(JSON.parse(loginUserLS))
+      }
+      
+  },[])
   const buttonHandler = (e) => {
     e.preventDefault();
     const languageMovie = movies.results.filter(
@@ -36,6 +49,8 @@ const Home = ({ setTitle, title, categoryTitle }) => {
             <option value="fr">Fr</option>
             <option value="ja">Ja</option>
             <option value="ko">Ko</option>
+            <option value="hi">Hi</option>
+            <option value="es">Es</option>
           </select>
         </div>
         <Genres setTitle={setTitle} categoryTitle={categoryTitle} />

@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { MovieContext } from "../context/MovieContext";
 import "../styles/Login.scss"
 function Login({ setShow }) {
-  const {users , setLogin, setLoginUser } = useContext(MovieContext);
+  const {users , setLogin, setLoginUser ,login,loginUser} = useContext(MovieContext);
   const [benutzer, setBenutzer] = useState({ email: "", password: "" });
   function inputChange(e) {
     let dataVonInput = e.target.value;
@@ -21,10 +21,12 @@ function Login({ setShow }) {
       
       setLogin(true);
       setShow(false);
+      setLoginUser(findUser);
+      localStorage.setItem("login",JSON.stringify(true));
+      localStorage.setItem("loginUser",JSON.stringify(findUser));
     } else {
       alert("wrong passport or email address");
     }
-    setLoginUser(findUser);
   };
 
   return (
